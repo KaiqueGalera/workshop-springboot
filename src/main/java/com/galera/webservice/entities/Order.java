@@ -25,15 +25,18 @@ public class Order implements Serializable {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     public Order(){
 
     }
 
-    public Order(Long id, Instant moment, User client) {
+    public Order(Long id, Instant moment, User client, OrderStatus orderStatus) {
         this.id = id;
         this.moment = moment;
         this.client = client;
+        this.orderStatus = orderStatus;
     }
 
     public Long getId() {
@@ -46,6 +49,10 @@ public class Order implements Serializable {
 
     public User getClient() {
         return client;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
     }
 
     @Override
