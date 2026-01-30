@@ -1,5 +1,6 @@
 package com.galera.webservice.resources;
 
+import com.galera.webservice.dto.UserDTO;
 import com.galera.webservice.entities.User;
 import com.galera.webservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +13,26 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping("/users")
 
 public class UserResource {
 
-    @Autowired
-    private UserService service; // Para essa inj de dep funcionar, tem que registar service como component (no caso é service pela semantica)
+    private final UserService service; // Para essa inj de dep funcionar, tem que registar service como component (no caso é service pela semantica)
 
-    @GetMapping
-    public ResponseEntity<List<User>> findAll(){
-        List<User> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+    public UserResource(UserService service) {
+        this.service = service;
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
-        User user = service.findById(id);
-        return ResponseEntity.ok().body(user);
+    @GetMapping
+    public ResponseEntity<List<UserDTO>> findAll(){
+        return ResponseEntity.ok(service.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> findById(@PathVariable Long id){
+        return service.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }

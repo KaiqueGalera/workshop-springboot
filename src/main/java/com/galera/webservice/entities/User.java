@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-@Entity
+@Entity// informs that class is also an entity
 @Table(name = "tb_user") // to avoid conflict, User is a reserved word
 public class User implements Serializable {
     @Serial
@@ -19,6 +21,9 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
+    @OneToMany(mappedBy = "client")
+    private final List<Order> orders = new ArrayList<>();
 
     public User(){}
 
@@ -48,6 +53,10 @@ public class User implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
     @Override
