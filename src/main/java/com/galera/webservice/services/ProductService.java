@@ -2,6 +2,7 @@ package com.galera.webservice.services;
 
 import com.galera.webservice.dto.ProductDTO;
 import com.galera.webservice.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

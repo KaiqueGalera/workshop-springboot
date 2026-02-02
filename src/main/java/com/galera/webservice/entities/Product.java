@@ -25,8 +25,10 @@ public class Product implements Serializable {
     @JoinTable(name = "tb_product_category",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns =  @JoinColumn(name = "category_id"))
-
     private final Set<Category> categories = new HashSet<>();
+
+    @OneToMany(mappedBy = "id.product")
+    private Set<OrderItem> items = new HashSet<>();
 
     public Product(){}
 
@@ -57,6 +59,10 @@ public class Product implements Serializable {
 
     public String getImgUrl() {
         return imgUrl;
+    }
+
+    public Set<OrderItem> getItems() {
+        return items;
     }
 
     public Set<Category> getCategories() {
