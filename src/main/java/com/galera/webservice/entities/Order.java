@@ -6,7 +6,9 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import java.util.TimeZone;
 
 @Entity
@@ -27,6 +29,9 @@ public class Order implements Serializable {
     private User client;
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
 
     public Order(){
 
@@ -53,6 +58,10 @@ public class Order implements Serializable {
 
     public OrderStatus getOrderStatus() {
         return orderStatus;
+    }
+
+    public Set<OrderItem> getItems() {
+        return items;
     }
 
     @Override
