@@ -19,6 +19,7 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
+    @ManyToMany(mappedBy = "categories")
     private final Set<Product> products = new HashSet<>();
 
     public Category(){}

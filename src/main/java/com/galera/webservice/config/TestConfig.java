@@ -49,9 +49,20 @@ public class TestConfig implements CommandLineRunner { // para popular o banco d
         Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
         Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 
+        //Quando tudo configurado pelas jointable, o jpa interpreta essa relação dos objetos e passa na tabela criada pela jointable
+        //Preenchendo a tabela criada na jointable (tb_product_category) devido relação n:m de category e product
+        p1.setCategory(cat2);
+        p2.setCategory(cat1);
+        p2.setCategory(cat3);
+        p3.setCategory(cat3);
+        p4.setCategory(cat3);
+        p5.setCategory(cat2);
+
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
+        //caso fizesse as associações depois de salvar, só salvar de novo...
     }
 }
