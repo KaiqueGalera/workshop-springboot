@@ -3,6 +3,7 @@ package com.galera.webservice.services;
 import com.galera.webservice.dto.OrderDTO;
 import com.galera.webservice.entities.Order;
 import com.galera.webservice.repositories.OrderRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,14 +17,16 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
+    @Transactional (readOnly = true)
     public List<OrderDTO> findAll(){
         return orderRepository.findAll()
                 .stream().map(OrderDTO::new)
                 .toList();
     }
 
-    public Optional<OrderDTO> findById(Long id){
-        return orderRepository.findById(id)
-                .map(OrderDTO::new);
+    @Transactional (readOnly = true)
+    public OrderDTO findById(Long id){
+        Order order = orderRepository.findById(id).orElseThrow(()->new RuntimeException("Order not found"));
+        return new OrderDTO(order);
     }
 }

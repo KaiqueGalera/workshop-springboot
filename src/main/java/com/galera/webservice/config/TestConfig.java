@@ -71,5 +71,14 @@ public class TestConfig implements CommandLineRunner { // para popular o banco d
         OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+
+        Payment pay1 = new Payment(null, Instant.parse("2019-06-20T19:53:07Z"), o1);
+
+        // Agora ao invés de criar/chamar o repository do payment para salvar o payment1, é realizado a associação
+        // com a entidade "dependente", payment só existe se existir order
+        o1.setPayment(pay1);
+        orderRepository.save(o1);
+
+        // a JPA se encarrega de criar o payment
     }
 }

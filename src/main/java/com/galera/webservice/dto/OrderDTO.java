@@ -6,14 +6,13 @@ import com.galera.webservice.entities.OrderItem;
 import java.time.Instant;
 import java.util.List;
 
-public record OrderDTO(Long id, Instant moment, String OrderStatus , List<ProductDTO> items) {
+public record OrderDTO(Long id, Instant moment, String OrderStatus, UserDTO client, List<OrderItemPDTO> items) {
     public OrderDTO(Order entity) {
         this(entity.getId(),
                 entity.getMoment(),
                 entity.getOrderStatus().name(),
+                new UserDTO(entity.getClient()),
                 entity.getItems().stream()
-                        .map(OrderItem::getProduct)
-                        .map(ProductDTO::new).toList()
-        );
+                        .map(OrderItemPDTO::new).toList());
     }
 }

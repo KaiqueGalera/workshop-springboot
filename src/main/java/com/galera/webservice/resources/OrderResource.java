@@ -27,9 +27,11 @@ public class OrderResource  {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderDTO> findById(@PathVariable Long id){
-        return orderService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<OrderDTO> findById(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(orderService.findById(id));
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
