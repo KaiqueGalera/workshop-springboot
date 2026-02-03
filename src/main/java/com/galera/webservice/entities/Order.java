@@ -9,7 +9,6 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.TimeZone;
 
 @Entity
 @Table(name = "tb_order")
@@ -73,6 +72,11 @@ public class Order implements Serializable {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Double getTotal(){
+        return items.stream()
+                .mapToDouble(OrderItem::getSubTotal).sum();
     }
 
     @Override

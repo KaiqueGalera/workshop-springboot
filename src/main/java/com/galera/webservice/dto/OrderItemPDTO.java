@@ -6,14 +6,16 @@ public record OrderItemPDTO(
         Long productId,
         String productName,
         Integer quantity,
-        Double price
+        Double price,
+        Double subTotal
 ) {
     public OrderItemPDTO(OrderItem entity) {
         this(
                 entity.getProduct().getId(),
                 entity.getProduct().getName(),
                 entity.getQuantity(),
-                entity.getPrice()
+                entity.getPrice(),
+                entity.getSubTotal()
         );
     }
 }
