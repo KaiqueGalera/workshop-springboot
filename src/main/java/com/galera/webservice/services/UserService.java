@@ -28,4 +28,17 @@ public class UserService {
         return userRepository.findById(id)
                 .map(UserDTO::new);
     }
+
+    public UserDTO insert(UserDTO userDTO){
+        User user = new User(
+                null,
+                userDTO.name(),
+                userDTO.email(),
+                userDTO.phone(),
+                userDTO.password());
+
+        user = userRepository.save(user);
+
+        return new UserDTO(user);
+    }
 }
