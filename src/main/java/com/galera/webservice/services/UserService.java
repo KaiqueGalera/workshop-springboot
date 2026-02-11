@@ -45,4 +45,29 @@ public class UserService {
     public void delete(Long id){
         userRepository.deleteById(id);
     }
+
+    public UserDTO update(Long id, UserDTO userDTO){
+        User user = userRepository.getReferenceById(id); //melhor do que usar o findbyid pq ele n trás o obj, ele "prepara" ele, mais otimizado (depois vc decide oq fazer)
+        updateData(user, userDTO);
+
+        UserDTO userDTO1 = new UserDTO(user);
+        userRepository.save(user);
+
+        return new UserDTO(user);
+    }
+
+    private void updateData(User entity, UserDTO userDTO){
+        User user = new User(
+                userDTO.id(),
+                userDTO.name(),
+                userDTO.email(),
+                userDTO.phone(),
+                userDTO.password()
+        );
+
+        entity.setName(user.getName());
+        entity.setEmail(user.getEmail());
+        entity.setPhone(user.getPhone());
+
+    }
 }
