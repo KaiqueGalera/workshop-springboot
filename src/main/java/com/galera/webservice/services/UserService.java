@@ -3,7 +3,10 @@ package com.galera.webservice.services;
 import com.galera.webservice.dto.UserDTO;
 import com.galera.webservice.entities.User;
 import com.galera.webservice.repositories.UserRepository;
+import com.galera.webservice.services.exceptions.DataBaseException;
 import com.galera.webservice.services.exceptions.ResourceNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,7 +47,13 @@ public class UserService {
     }
 
     public void delete(Long id){
-        userRepository.deleteById(id);
+        User user = userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException(id));
+
+       try {
+           userRepository.delete(user);
+       } catch (DataIntegrityViolationException e) {
+           throw new DataBaseException(e.getMessage());
+       }
     }
 
     public UserDTO update(Long id, UserDTO userDTO){
