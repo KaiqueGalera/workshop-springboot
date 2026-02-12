@@ -3,6 +3,7 @@ package com.galera.webservice.services;
 import com.galera.webservice.dto.UserDTO;
 import com.galera.webservice.entities.User;
 import com.galera.webservice.repositories.UserRepository;
+import com.galera.webservice.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,9 +25,9 @@ public class UserService {
                 .toList();
     }
 
-    public Optional<UserDTO> findById(Long id){
+    public UserDTO findById(Long id){
         return userRepository.findById(id)
-                .map(UserDTO::new);
+                .map(UserDTO::new).orElseThrow(()-> new ResourceNotFoundException(id));
     }
 
     public UserDTO insert(UserDTO userDTO){
