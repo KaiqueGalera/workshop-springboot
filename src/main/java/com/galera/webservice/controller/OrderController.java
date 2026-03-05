@@ -1,4 +1,4 @@
-package com.galera.webservice.service;
+package com.galera.webservice.controller;
 
 import com.galera.webservice.dto.OrderDTO;
 import com.galera.webservice.services.OrderService;
@@ -12,10 +12,10 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("/orders")
-public class OrderResource  {
+public class OrderController {
     private final OrderService orderService;
 
-    public OrderResource(OrderService orderService) {
+    public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 

@@ -1,4 +1,4 @@
-package com.galera.webservice.service;
+package com.galera.webservice.controller;
 
 import com.galera.webservice.dto.ProductDTO;
 import com.galera.webservice.services.ProductService;
@@ -12,10 +12,10 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/products")
-public class ProductResource {
+public class ProductController {
     private final ProductService productService;
 
-    public ProductResource(ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 

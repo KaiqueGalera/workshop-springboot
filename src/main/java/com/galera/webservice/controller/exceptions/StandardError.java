@@ -1,4 +1,4 @@
-package com.galera.webservice.service.exceptions;
+package com.galera.webservice.controller.exceptions;
 
 import java.io.Serial;
 import java.io.Serializable;

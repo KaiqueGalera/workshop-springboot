@@ -1,4 +1,4 @@
-package com.galera.webservice.service;
+package com.galera.webservice.controller;
 
 import com.galera.webservice.dto.CategoryDTO;
 import com.galera.webservice.services.CategoryService;
@@ -12,10 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categories")
-public class CategoryResource {
+public class CategoryController {
     private final CategoryService categoryService;
 
-    public CategoryResource(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 

@@ -1,7 +1,8 @@
-package com.galera.webservice.service;
+package com.galera.webservice.controller;
 
 import com.galera.webservice.dto.UserDTO;
 import com.galera.webservice.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -12,11 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 
-public class UserResource {
+public class UserController {
 
     private final UserService service; // Para essa inj de dep funcionar, tem que registar service como component (no caso é service pela semantica)
 
-    public UserResource(UserService service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
@@ -33,9 +34,12 @@ public class UserResource {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> insert(@RequestBody UserDTO userDTO){
+    public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserDTO userDTO){
         userDTO = service.insert(userDTO);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(userDTO.id()).toUri();
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequestUri().path("/{id}")
+                .buildAndExpand(userDTO.id())
+                .toUri();
         return ResponseEntity.created(uri).body(userDTO);
     }
 

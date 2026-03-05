@@ -1,4 +1,4 @@
-package com.galera.webservice.service.exceptions;
+package com.galera.webservice.controller.exceptions;
 
 import com.galera.webservice.services.exceptions.DataBaseException;
 import com.galera.webservice.services.exceptions.ResourceNotFoundException;
