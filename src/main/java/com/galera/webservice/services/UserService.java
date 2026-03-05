@@ -1,16 +1,14 @@
 package com.galera.webservice.services;
 
 import com.galera.webservice.dto.UserDTO;
-import com.galera.webservice.entities.User;
-import com.galera.webservice.repositories.UserRepository;
+import com.galera.webservice.domain.User;
+import com.galera.webservice.repository.UserRepository;
 import com.galera.webservice.services.exceptions.DataBaseException;
 import com.galera.webservice.services.exceptions.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service // para incluir no pacote de inj de dep automático do spring
 public class UserService {

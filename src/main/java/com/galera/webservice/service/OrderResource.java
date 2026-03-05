@@ -1,7 +1,6 @@
-package com.galera.webservice.resources;
+package com.galera.webservice.service;
 
 import com.galera.webservice.dto.OrderDTO;
-import com.galera.webservice.entities.Order;
 import com.galera.webservice.services.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController()
 @RequestMapping("/orders")

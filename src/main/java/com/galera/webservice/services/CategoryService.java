@@ -1,7 +1,7 @@
 package com.galera.webservice.services;
 
 import com.galera.webservice.dto.CategoryDTO;
-import com.galera.webservice.repositories.CategoryRepository;
+import com.galera.webservice.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.galera.webservice.entities;
+package com.galera.webservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;

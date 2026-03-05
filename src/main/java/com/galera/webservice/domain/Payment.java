@@ -1,4 +1,4 @@
-package com.galera.webservice.entities;
+package com.galera.webservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -7,7 +7,6 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
-import java.util.TimeZone;
 
 @Entity
 @Table(name = "tb_payment")

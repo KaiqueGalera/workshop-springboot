@@ -1,8 +1,6 @@
 package com.galera.webservice.dto;
 
-import com.galera.webservice.entities.Order;
-import com.galera.webservice.entities.OrderItem;
-import com.galera.webservice.entities.Product;
+import com.galera.webservice.domain.OrderItem;
 
 public record OrderItemDTO(Long id, Integer quantity, Double price) {
 

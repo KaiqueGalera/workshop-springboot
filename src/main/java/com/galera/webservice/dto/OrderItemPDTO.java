@@ -1,6 +1,6 @@
 package com.galera.webservice.dto;
 
-import com.galera.webservice.entities.OrderItem;
+import com.galera.webservice.domain.OrderItem;
 
 public record OrderItemPDTO(
         Long productId,

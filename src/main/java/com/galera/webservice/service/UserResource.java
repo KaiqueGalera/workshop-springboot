@@ -1,16 +1,13 @@
-package com.galera.webservice.resources;
+package com.galera.webservice.service;
 
 import com.galera.webservice.dto.UserDTO;
-import com.galera.webservice.entities.User;
 import com.galera.webservice.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")

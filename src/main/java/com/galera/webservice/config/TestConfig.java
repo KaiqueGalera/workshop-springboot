@@ -1,7 +1,7 @@
 package com.galera.webservice.config;
 
-import com.galera.webservice.entities.*;
-import com.galera.webservice.repositories.*;
+import com.galera.webservice.domain.*;
+import com.galera.webservice.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

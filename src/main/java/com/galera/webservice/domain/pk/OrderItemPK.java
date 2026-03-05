@@ -1,7 +1,7 @@
-package com.galera.webservice.entities.pk;
+package com.galera.webservice.domain.pk;
 
-import com.galera.webservice.entities.Order;
-import com.galera.webservice.entities.Product;
+import com.galera.webservice.domain.Order;
+import com.galera.webservice.domain.Product;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

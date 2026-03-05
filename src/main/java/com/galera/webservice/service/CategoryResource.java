@@ -1,4 +1,4 @@
-package com.galera.webservice.resources;
+package com.galera.webservice.service;
 
 import com.galera.webservice.dto.CategoryDTO;
 import com.galera.webservice.services.CategoryService;

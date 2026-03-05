@@ -1,4 +1,4 @@
-package com.galera.webservice.entities;
+package com.galera.webservice.domain;
 
 import jakarta.persistence.*;
 

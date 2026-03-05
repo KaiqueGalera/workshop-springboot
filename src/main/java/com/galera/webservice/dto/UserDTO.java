@@ -1,8 +1,6 @@
 package com.galera.webservice.dto;
 
-import com.galera.webservice.entities.User;
-
-import java.util.List;
+import com.galera.webservice.domain.User;
 
 public record UserDTO(Long id,
                       String name,

@@ -1,7 +1,6 @@
 package com.galera.webservice.dto;
 
-import com.galera.webservice.entities.Category;
-import jakarta.persistence.Entity;
+import com.galera.webservice.domain.Category;
 
 public record CategoryDTO(Long id, String name) {
     public CategoryDTO(Category entity){

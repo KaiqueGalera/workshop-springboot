@@ -1,6 +1,6 @@
-package com.galera.webservice.entities;
+package com.galera.webservice.domain;
 
-import com.galera.webservice.entities.pk.OrderItemPK;
+import com.galera.webservice.domain.pk.OrderItemPK;
 import jakarta.persistence.*;
 
 import java.io.Serial;

@@ -1,13 +1,12 @@
 package com.galera.webservice.services;
 
 import com.galera.webservice.dto.OrderDTO;
-import com.galera.webservice.entities.Order;
-import com.galera.webservice.repositories.OrderRepository;
+import com.galera.webservice.domain.Order;
+import com.galera.webservice.repository.OrderRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderService {
